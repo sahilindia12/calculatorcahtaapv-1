@@ -4,6 +4,9 @@
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
 
+
+
+
 function Add({navigation }) {
   return (
   <>
@@ -11,7 +14,7 @@ function Add({navigation }) {
   
   <View>
 
-    <Text> add </Text>
+    <Text> add  to acrt google</Text>
 
 
    
@@ -20,15 +23,6 @@ function Add({navigation }) {
         onPress={() => navigation.navigate('op')}
       />
 
-<Button
-        title="Go to cal"
-        onPress={() => navigation.navigate('cal')}
-      />
-
-<Button
-        title="Go to new "
-        onPress={() => navigation.navigate('neww')}
-      />
   </View>
   </>
   );
