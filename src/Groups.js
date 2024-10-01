@@ -15,7 +15,13 @@ function Group({navigation }) {
     <Text> add </Text>
 
 
+   <Button
+ 
+
+ title='go to permison'
+ onPress={()=>navigation.navigate('Per')}
    
+   />
 
   </View>
   </>

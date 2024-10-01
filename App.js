@@ -5,23 +5,53 @@ import { NavigationContainer } from '@react-navigation/native';
 import Group from './src/Groups';
 import Singup from './src/Singup';
 import Signup from './src/Singup';
+import { Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Permson from './src/Permison';
+import New from './src/New';
+
 
 const Tab = createMaterialTopTabNavigator();
+const Stack = createNativeStackNavigator();
+
+const stack=()=>{
+  return(
+
+ 
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Cal} />
+      <Stack.Screen name="Per" component={Permson} />
+      <Stack.Screen name="New" component={New} />
+    </Stack.Navigator>
+
+  )
+}
 
 function App() {
+
+
   return (
 
-    <NavigationContainer>
+   <>
+   
+   
+   <NavigationContainer>
 
 
-    <Tab.Navigator key={1}>
-      <Tab.Screen name="Home" component={Add} />
-      <Tab.Screen name="cal" component={Cal} />
-      <Tab.Screen name="singup" component={Signup} />
-      <Tab.Screen name="grups" component={Group} />
-    </Tab.Navigator>
+<Tab.Navigator key={1}>
+  <Tab.Screen name="Home" component={stack} />
+  <Tab.Screen name="cal" component={Cal} />
+  <Tab.Screen name="singup" component={Signup} />
+  <Tab.Screen name="grups" component={Group} />
+</Tab.Navigator>
 
-    </NavigationContainer>
+</NavigationContainer>
+
+<View>
+
+
+</View>
+   </>
   );
    
 

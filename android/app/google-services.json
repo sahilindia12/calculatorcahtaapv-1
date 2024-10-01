@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "77002303608",
+    "project_id": "wowaap-49288",
+    "storage_bucket": "wowaap-49288.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77002303608:android:05f7b4b605078bb6ad258d",
+        "android_client_info": {
+          "package_name": "com.wow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeAdS85NYUnVxajx9TKSpHX9HFGsN75pw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

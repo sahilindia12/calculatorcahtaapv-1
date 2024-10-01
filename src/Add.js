@@ -14,7 +14,7 @@ function Add({navigation }) {
   
   <View>
 
-    <Text> add  to acrt google</Text>
+    <Text> add  to acrt google uu</Text>
 
 
    
