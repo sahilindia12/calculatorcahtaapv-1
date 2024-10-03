@@ -23,7 +23,7 @@ const Signup = () => {
   const btn = () => {
 
     auth()
-    .createUserWithEmailAndPassword('safijjlfsadf@gmail.com','1235432')
+    .createUserWithEmailAndPassword('safkfsdff@gmail.com','1235432')
     .then(() => {
       console.log('User account created & signed in!');
 

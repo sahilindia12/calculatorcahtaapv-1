@@ -18,8 +18,16 @@ function Group({navigation }) {
    <Button
  
 
- title='go to permison'
- onPress={()=>navigation.navigate('Per')}
+ title='go to  chat'
+ onPress={()=>navigation.navigate('chat')}
+   
+   />
+
+<Button
+ 
+
+ title='go to local staoreg'
+ onPress={()=>navigation.navigate('local')}
    
    />
 

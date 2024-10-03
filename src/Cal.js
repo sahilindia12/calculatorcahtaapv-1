@@ -1,7 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Cal() {
+export default function Cal({navigation}) {
+  const [pass, setpass] = useState();
+
+
+useEffect(() => {
+  const localget=async()=>{
+      
+  
+    try {
+      const value = await AsyncStorage.getItem('pass');
+    console.warn(value);
+    setpass(value)
+
+    } catch (error) {
+      // Error retrieving data
+
+  };
+}
+
+localget()
+ 
+}, []);
+
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
 
@@ -17,7 +40,7 @@ export default function Cal() {
     }
   };
 
-  const clearInput = () => {
+  const clearInput = ({navigation}) => {
     setInput("");
     setResult("");
   };
@@ -51,13 +74,29 @@ export default function Cal() {
         <Button label="=" onPress={calculateResult} />
         <Button label="/" onPress={() => handleInput("/")} />
       </View>
+
+  {/* {
+    pass===result?    <TouchableOpacity  className=' flex justify-center items-center bg-green-800 'onPress={()=>navigation.navigate('pass')}>
+    <Text className=' text-white text-2xl'>ccreapsswoed</Text>
+  </TouchableOpacity>:null
+  } */}
+
+
+
+      {
+        pass===result?     pass===result?    <TouchableOpacity  className=' flex justify-center items-center bg-green-800 'onPress={()=>navigation.navigate('chat')}>
+    <Text className=' text-white text-2xl'>go to chat</Text>
+  </TouchableOpacity>:null
+ 
+:<Text>no mtach your password</Text>
+      }
     </View>
   );
 }
 
 const Button = ({ label, onPress }) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={styles.button}  onPress={onPress}>
       <Text style={styles.buttonText}>{label}</Text>
     </TouchableOpacity>
   );

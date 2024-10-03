@@ -9,6 +9,9 @@ import { Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Permson from './src/Permison';
 import New from './src/New';
+import Local from './src/Local';
+import Password from './src/Passwod';
+import Caht from './src/Chataap';
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -21,7 +24,12 @@ const stack=()=>{
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Cal} />
       <Stack.Screen name="Per" component={Permson} />
+      <Stack.Screen name="chat" component={Caht} />
+
       <Stack.Screen name="New" component={New} />
+      <Stack.Screen name="pass" component={Password} />
+
+      <Stack.Screen name="local" component={Local} />
     </Stack.Navigator>
 
   )
