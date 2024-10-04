@@ -10,8 +10,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Permson from './src/Permison';
 import New from './src/New';
 import Local from './src/Local';
-import Password from './src/Passwod';
+
 import Caht from './src/Chataap';
+import Navagat from './src/Navigat';
+import Bg from './src/Bg';
+
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -25,9 +28,12 @@ const stack=()=>{
       <Stack.Screen name="Home" component={Cal} />
       <Stack.Screen name="Per" component={Permson} />
       <Stack.Screen name="chat" component={Caht} />
+      <Stack.Screen name="bg" component={Bg} />
 
       <Stack.Screen name="New" component={New} />
-      <Stack.Screen name="pass" component={Password} />
+      <Stack.Screen name="Use" component={Navagat} />
+
+      <Stack.Screen name="password" component={Permson} />
 
       <Stack.Screen name="local" component={Local} />
     </Stack.Navigator>

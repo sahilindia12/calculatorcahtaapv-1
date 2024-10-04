@@ -1,59 +1,100 @@
 import { useState } from "react";
-import { Button, Text, View} from "react-native";
+import { Button, TextInput, TouchableOpacity, Text, View } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import {request, PERMISSIONS} from 'react-native-permissions';
-import FilePickerManager from 'react-native-file-picker';
 
-function Permson(){
+function Permson() {
 
-    const [data,setdata]=useState(9)
+  const [pass, setpass] = useState();
 
-const  pp =async()=>{
+  const [localge, setlocalge] = useState();
 
-    // request(PERMISSIONS.ANDROID.CAMERA).then((result) => {
-    //     console.warn(result)
-    //   });
+  const storeData = async () => {
+    try {
 
-    FilePickerManager.showFilePicker(null, (response) => {
-        console.log('Response = ', response);
-      
-        if (response.didCancel) {
-          console.log('User cancelled file picker');
-        }
-        else if (response.error) {
-          console.log('FilePickerManager Error: ', response.error);
-        }
-        else {
-        console.warn(response)
-        }
-      });
+      await AsyncStorage.setItem('pass', pass)
+      console.warn('set dta');
+      setpass("")
 
-}
-return(
+    } catch (error) {
+      // Error saving data
+      console.warn(error);
+
+    }
+  };
+
+  const localget = async () => {
+
+
+    try {
+      const value = await AsyncStorage.getItem('pass');
+      console.warn(value);
+      setlocalge(value)
+
+    } catch (error) {
+      // Error retrieving data
+
+    };
+  }
+
+  const remove = async () => {
+
+
+    try {
+      const value = await AsyncStorage.removeItem('pass');
+      console.warn(value);
+      setlocalge(value)
+
+    } catch (error) {
+      // Error retrieving data
+
+    };
+  }
+
+  return (
 
 
     <>
-    <View>
+      <View className=' border-2 '>
 
 
-<Button
-title="permison btn pp"
-onPress={pp}
-/>
-<Text>
 
+        <TextInput className=' border-2'
 
-`this is your anser {data}`
-</Text>
-    </View>
-    
+          onChangeText={setpass}
+
+          placeholder="useless placeholder"
+          keyboardType="numeric"
+
+        />
+        <TouchableOpacity className=' flex justify-center items-center bg-green-500 ' onPress={storeData}>
+          <Text className=' text-white text-2xl'>ccreapsswoed</Text>
+        </TouchableOpacity>
+
+      </View>
+      <TouchableOpacity className=' flex justify-center items-center bg-green-500 ' onPress={localget}>
+          <Text className=' text-white text-2xl'>getpass</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity className=' flex justify-center items-center bg-green-500 ' onPress={remove}>
+          <Text className=' text-white text-2xl'>remove </Text>
+        </TouchableOpacity>
+
+        <Text>
+        {localge}
+      </Text>
+   {
+    localge?<Text>pass </Text>:<Text>not ps</Text>
+   }
+
     </>
-)
+  )
 
 
 
 }
- 
+
 
 
 

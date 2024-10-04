@@ -1,31 +1,49 @@
 import React, { useState,useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Cal({navigation}) {
+export default function Cal() {
   const [pass, setpass] = useState();
 
-
-useEffect(() => {
-  const localget=async()=>{
-      
+  const navigation = useNavigation();
   
+  useEffect(() => {
+    const localget=async()=>{
+        
+    
+      try {
+        const value = await AsyncStorage.getItem('pass');
+      console.warn(value);
+      setpass(value)
+  
+      } catch (error) {
+        // Error retrieving data
+        console.warn(error);
+    };
+  }
+  
+  localget()
+   
+  }, []);// Get the navigation object
+
+  const remov = async () => {
+
+
     try {
-      const value = await AsyncStorage.getItem('pass');
-    console.warn(value);
-    setpass(value)
+      const value = await AsyncStorage.removeItem('pass');
+      console.warn(value);
+    
 
     } catch (error) {
       // Error retrieving data
 
-  };
-}
+    };
+  }
 
-localget()
- 
-}, []);
 
   const [input, setInput] = useState("");
+  const [local, setlocal] = useState();
   const [result, setResult] = useState("");
 
   const handleInput = (value) => {
@@ -33,11 +51,18 @@ localget()
   };
 
   const calculateResult = () => {
-    try {
-      setResult(eval(input).toString());
-    } catch (error) {
-      setResult("Error");
-    }
+ if (pass===input) {
+  console.warn('caht now go fdrom');
+  navigation.navigate("chat")
+
+ }
+ else{
+  try {
+    setResult(eval(input).toString());
+  } catch (error) {
+    setResult("Error");
+  }
+ }
   };
 
   const clearInput = ({navigation}) => {
@@ -45,8 +70,25 @@ localget()
     setResult("");
   };
 
+  const remove=async()=>{
+
+ 
+    try {
+    const val= await AsyncStorage.removeItem('pass');
+
+   
+console.warn('value',val);
+    } catch (error) {
+      // Error retrieving data
+console.warn('error',error);
+  };
+  }
+
+
   return (
-    <View style={styles.container}>
+
+
+<View style={styles.container} >
       <Text style={styles.display}>{input || "0"}</Text>
       <Text style={styles.result}>{result || "0"}</Text>
 
@@ -74,23 +116,32 @@ localget()
         <Button label="=" onPress={calculateResult} />
         <Button label="/" onPress={() => handleInput("/")} />
       </View>
+{
+  
+  pass?  null:<TouchableOpacity  className=' flex justify-center items-center bg-green-800 'onPress={()=>navigation.navigate('password')}>
+  <Text className=' text-white text-2xl'>ccreapsswoed</Text>
+</TouchableOpacity>
+ } 
+{
+ pass ?<Text>yed pass</Text>:<Text>pass not</Text>
+}
 
-  {/* {
-    pass===result?    <TouchableOpacity  className=' flex justify-center items-center bg-green-800 'onPress={()=>navigation.navigate('pass')}>
-    <Text className=' text-white text-2xl'>ccreapsswoed</Text>
-  </TouchableOpacity>:null
-  } */}
+<Text>
+   pass {pass}
+</Text>
+{/* {
+  pass==='undefind'?<Text>note</Text>:<Text>yes hai</Text>
+} */}
 
 
 
-      {
-        pass===result?     pass===result?    <TouchableOpacity  className=' flex justify-center items-center bg-green-800 'onPress={()=>navigation.navigate('chat')}>
-    <Text className=' text-white text-2xl'>go to chat</Text>
-  </TouchableOpacity>:null
- 
-:<Text>no mtach your password</Text>
-      }
+<Button
+label={'remoe'}
+onPress={remov}
+/>
     </View>
+
+
   );
 }
 
