@@ -2,7 +2,7 @@
 
 
 import * as React from 'react';
-import {Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import {Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 
 
@@ -10,7 +10,10 @@ import {Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 function Bg({ navigation }) {
     return (
         <>
-   <Image
+
+
+
+ <Image
           source={require('../publice/acon.png')}  // Path to your local image
 
         // Local image path
@@ -26,11 +29,13 @@ function Bg({ navigation }) {
             
 
             <ImageBackground 
-        source={require('../publice/acon.png')}  // Path to your image
-      
+        source={require('../publice/acon.png')}  // Path to your 
+        style={styles.backgroundImage}
+
       >
         <Text >Hello, World!</Text>
       </ImageBackground>
+
         </>
     );
 }
@@ -79,12 +84,16 @@ export default Bg;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
     },
-    image: {
-      width: 200,
-      height: 200,
-      resizeMode: 'cover',  // Fill the container while maintaining aspect ratio
+    backgroundImage: {
+      flex: 1,
+      resizeMode: 'cover',  // or 'contain'
+      justifyContent: 'center',
+    },
+    text: {
+      color: 'white',
+      fontSize: 30,
+      fontWeight: 'bold',
+      textAlign: 'center',
     },
   });

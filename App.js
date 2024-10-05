@@ -1,5 +1,5 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Add from './src/Add';
+
 import Cal from './src/Cal';
 import { NavigationContainer } from '@react-navigation/native';
 import Group from './src/Groups';
@@ -14,6 +14,8 @@ import Local from './src/Local';
 import Caht from './src/Chataap';
 import Navagat from './src/Navigat';
 import Bg from './src/Bg';
+import Test from './src/Test';
+
 
 
 
@@ -30,8 +32,10 @@ const stack=()=>{
       <Stack.Screen name="chat" component={Caht} />
       <Stack.Screen name="bg" component={Bg} />
 
+
       <Stack.Screen name="New" component={New} />
       <Stack.Screen name="Use" component={Navagat} />
+      <Stack.Screen name="test" component={Test} />
 
       <Stack.Screen name="password" component={Permson} />
 

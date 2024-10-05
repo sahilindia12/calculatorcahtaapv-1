@@ -40,7 +40,7 @@ function Caht({ navigation }) {
                     return (<>
                         <View  >
 
-                            <View className=' bg-slate-200  flex justify-center items-center'>
+                            <View key={item.id} className=' bg-slate-200  flex justify-center items-center'>
 
                                 <Text className=' text-2xl text-green-300 m-3'>
 

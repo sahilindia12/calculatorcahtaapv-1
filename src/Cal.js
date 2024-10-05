@@ -1,9 +1,11 @@
 import React, { useState,useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {Alert,TouchableOpacity, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Cal() {
+  const [modalVisible, setModalVisible]=useState(false)
+
   const [pass, setpass] = useState();
 
   const navigation = useNavigation();
@@ -87,11 +89,19 @@ console.warn('error',error);
 
   return (
 
+    <>
+
+
+
 
 <View style={styles.container} >
-      <Text style={styles.display}>{input || "0"}</Text>
-      <Text style={styles.result}>{result || "0"}</Text>
+   <View className=' flex  items-end'>
+   <Text  className='  text-black text-[53px]'>{input || "0"}</Text>
+   </View>
+      <View className=' flex items-end'>
+      <Text  className=' text-green-500  text-[35px]'>{result || "0"}</Text>
 
+      </View>
       <View style={styles.row}>
         <Button label="1" onPress={() => handleInput("1")} />
         <Button label="2" onPress={() => handleInput("2")} />
@@ -109,6 +119,7 @@ console.warn('error',error);
         <Button label="8" onPress={() => handleInput("8")} />
         <Button label="9" onPress={() => handleInput("9")} />
         <Button label="*" onPress={() => handleInput("*")} />
+                
       </View>
       <View style={styles.row}>
         <Button label="C" onPress={clearInput} />
@@ -116,31 +127,51 @@ console.warn('error',error);
         <Button label="=" onPress={calculateResult} />
         <Button label="/" onPress={() => handleInput("/")} />
       </View>
-{
+{/* {
   
   pass?  null:<TouchableOpacity  className=' flex justify-center items-center bg-green-800 'onPress={()=>navigation.navigate('password')}>
   <Text className=' text-white text-2xl'>ccreapsswoed</Text>
 </TouchableOpacity>
- } 
-{
- pass ?<Text>yed pass</Text>:<Text>pass not</Text>
-}
-
-<Text>
-   pass {pass}
-</Text>
+ }  */}
 {/* {
-  pass==='undefind'?<Text>note</Text>:<Text>yes hai</Text>
+ pass ?<Text>yed pass</Text>:<Text>pass not</Text>
 } */}
 
+{/* <Text>
+   pass {pass}
+</Text> */}
 
 
-<Button
-label={'remoe'}
-onPress={remov}
-/>
+
+
+{/* <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Hello World!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}>
+              <Text style={styles.textStyle}>Hide Modal plese</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => setModalVisible(true)}>
+        <Text style={styles.textStyle}>Show Modal</Text>
+      </Pressable>
+    </View> */}
     </View>
-
+    </>
 
   );
 }
